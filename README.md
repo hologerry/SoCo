@@ -22,7 +22,7 @@ Our method, called Selective Object COntrastive learning (SoCo), achieves state-
 
 
 ## Main results
-
+> The pretrained models will be available soon.
 ### SoCo pre-trained models
 | Model |     Arch     | Epochs |                       Scripts                       | Download |
 |:-----:|:------------:|:------:|:---------------------------------------------------:|:--------:|
@@ -34,22 +34,22 @@ Our method, called Selective Object COntrastive learning (SoCo), achieves state-
 
 
 ### Results on COCO with MaskRCNN **R50-FPN**
-| Methods    | Epoch | AP<sup>bb</sup> | AP<sup>bb</sup><sub>50</sub> | AP<sup>bb</sup><sub>75</sub> | AP<sup>mk </sup> | AP<sup>mk</sup><sub>50</sub> | AP<sup>mk</sup><sub>75</sub> | Detectron2 trained |
-|------------|-------|-----------------|------------------------------|-----------------------------------|--------------------|-----------------------------------|-----------------------------------|--------------------|
-| Scratch    | -     | 31.0            | 49.5                         | 33.2                              | 28.5               | 46.8                              | 30.4                              |                    |
-| Supervised | 90    | 38.9            | 59.6                         | 42.7                              | 35.4               | 56.5                              | 38.1                              |                    |
-| SoCo       | 100   | 42.3            | 62.5                         | 46.5                              | 37.6               | 59.1                              | 40.5                              |                    |
-| SoCo       | 400   | 43.0            | 63.3                         | 47.1                              | 38.2               | 60.2                              | 41.0                              |                    |
-| SoCo*      | 400   | 43.2            | 63.5                         | 47.4                              | 38.4               | 60.2                              | 41.4                              |                    |
+| Methods    | Epoch | AP<sup>bb</sup> | AP<sup>bb</sup><sub>50</sub> | AP<sup>bb</sup><sub>75</sub> | AP<sup>mk</sup> | AP<sup>mk</sup><sub>50</sub> | AP<sup>mk</sup><sub>75</sub> | Detectron2 trained |
+|:----------:|:-----:|:---------------:|:----------------------------:|:----------------------------:|:---------------:|:----------------------------:|:----------------------------:|:------------------:|
+| Scratch    | -     | 31.0            | 49.5                         | 33.2                         | 28.5            | 46.8                         | 30.4                         |        --          |
+| Supervised | 90    | 38.9            | 59.6                         | 42.7                         | 35.4            | 56.5                         | 38.1                         |        --          |
+| SoCo       | 100   | 42.3            | 62.5                         | 46.5                         | 37.6            | 59.1                         | 40.5                         |                    |
+| SoCo       | 400   | 43.0            | 63.3                         | 47.1                         | 38.2            | 60.2                         | 41.0                         |                    |
+| SoCo*      | 400   | 43.2            | 63.5                         | 47.4                         | 38.4            | 60.2                         | 41.4                         |                    |
 
 
 ### Results on COCO with MaskRCNN **R50-C4**
-| Methods    | Epoch | AP<sup>bb</sup> | AP<sup>bb</sup><sub>50</sub> | AP<sup>bb</sup><sub>75</sub> | AP<sup>mk </sup> | AP<sup>mk</sup><sub>50</sub> | AP<sup>mk</sup><sub>75</sub> | Detectron2 trained |
-|------------|-------|-----------------|------------------------------|-----------------------------------|--------------------|-----------------------------------|-----------------------------------|--------------------|
-| Scratch    | -     | 26.4            | 44.0                         | 27.8                              | 29.3               | 46.9                              | 30.8                              |                    |
-| Supervised | 90    | 38.2            | 58.2                         | 41.2                              | 33.3               | 54.7                              | 35.2                              |                    |
-| SoCo       | 100   | 40.4            | 60.4                         | 43.7                              | 34.9               | 56.8                              | 37.0                              |                    |
-| SoCo       | 400   | 40.9            | 60.9                         | 44.3                              | 35.3               | 57.5                              | 37.3                              |                    |
+| Methods    | Epoch | AP<sup>bb</sup> | AP<sup>bb</sup><sub>50</sub> | AP<sup>bb</sup><sub>75</sub> | AP<sup>mk</sup> | AP<sup>mk</sup><sub>50</sub> | AP<sup>mk</sup><sub>75</sub> | Detectron2 trained |
+|:----------:|:-----:|:---------------:|:----------------------------:|:----------------------------:|:---------------:|:----------------------------:|:----------------------------:|:------------------:|
+| Scratch    | -     | 26.4            | 44.0                         | 27.8                         | 29.3            | 46.9                         | 30.8                         |        --          |
+| Supervised | 90    | 38.2            | 58.2                         | 41.2                         | 33.3            | 54.7                         | 35.2                         |        --          |
+| SoCo       | 100   | 40.4            | 60.4                         | 43.7                         | 34.9            | 56.8                         | 37.0                         |                    |
+| SoCo       | 400   | 40.9            | 60.9                         | 44.3                         | 35.3            | 57.5                         | 37.3                         |                    |
 
 
 ## Get started
@@ -59,15 +59,15 @@ The [Dockerfile](docker/Dockerfile) is included, please refer to it.
 
 ### Prepare data with Selective Search
 1. Generate Selective Search proposals
-    ```python
+    ```shell
     python selective_search/generate_imagenet_ss_proposals.py
     ```
 2. Filter out not valid proposals with filter strategy
-    ```python
+    ```shell
     python selective_search/filter_ss_proposals_json.py
     ```
 3. Post preprocessing for no proposals images
-    ```python
+    ```shell
     python selective_search/filter_ss_proposals_json_post_no_prop.py
     ```
 
