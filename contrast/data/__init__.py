@@ -72,7 +72,7 @@ def get_loader(aug_type, args, two_crop=False, prefix='train', return_coord=Fals
             train_dataset = ImageFolderImageAsymBboxCutout(args.data_dir, train_ann_file, train_prefix,
                                                            train_props_file, image_size=args.image_size, select_strategy=args.select_strategy,
                                                            select_k=args.select_k, weight_strategy=args.weight_strategy,
-                                                           jitter_ratio=args.jitter_ratio, padding_k=args.padding_k,
+                                                           jitter_prob=args.jitter_prob, jitter_ratio=args.jitter_ratio, padding_k=args.padding_k,
                                                            aware_range=args.aware_range, aware_start=args.aware_start, aware_end=args.aware_end,
                                                            max_tries=args.max_tries,
                                                            transform=transform, cache_mode=args.cache_mode,
@@ -82,7 +82,7 @@ def get_loader(aug_type, args, two_crop=False, prefix='train', return_coord=Fals
             train_dataset = ImageFolderImageAsymBboxAwareMultiJitter1(args.data_dir, train_ann_file, train_prefix,
                                                                       train_props_file, image_size=args.image_size, select_strategy=args.select_strategy,
                                                                       select_k=args.select_k, weight_strategy=args.weight_strategy,
-                                                                      jitter_ratio=args.jitter_ratio, padding_k=args.padding_k,
+                                                                      jitter_prob=args.jitter_prob, jitter_ratio=args.jitter_ratio, padding_k=args.padding_k,
                                                                       aware_range=args.aware_range, aware_start=args.aware_start, aware_end=args.aware_end,
                                                                       max_tries=args.max_tries,
                                                                       transform=transform, cache_mode=args.cache_mode,
@@ -90,25 +90,25 @@ def get_loader(aug_type, args, two_crop=False, prefix='train', return_coord=Fals
 
         elif aug_type == 'ImageAsymBboxAwareMultiJitter1Cutout':
             train_dataset = ImageFolderImageAsymBboxAwareMultiJitter1Cutout(args.data_dir, train_ann_file, train_prefix,
-                                                                           train_props_file, image_size=args.image_size, select_strategy=args.select_strategy,
-                                                                           select_k=args.select_k, weight_strategy=args.weight_strategy,
-                                                                           jitter_ratio=args.jitter_ratio, padding_k=args.padding_k,
-                                                                           aware_range=args.aware_range, aware_start=args.aware_start, aware_end=args.aware_end,
-                                                                           max_tries=args.max_tries,
-                                                                           transform=transform, cache_mode=args.cache_mode,
-                                                                           dataset=args.dataset)
-
-        elif aug_type == 'ImageAsymBboxAwareMulti3ResizeExtraJitter1':
-            train_dataset = ImageFolderImageAsymBboxAwareMulti3ResizeExtraJitter1(args.data_dir, train_ann_file, train_prefix,
-                                                                            train_props_file, image_size=args.image_size, image3_size=args.image3_size,
-                                                                            image4_size=args.image4_size,
-                                                                            select_strategy=args.select_strategy,
+                                                                            train_props_file, image_size=args.image_size, select_strategy=args.select_strategy,
                                                                             select_k=args.select_k, weight_strategy=args.weight_strategy,
-                                                                            jitter_ratio=args.jitter_ratio, padding_k=args.padding_k,
+                                                                            jitter_prob=args.jitter_prob, jitter_ratio=args.jitter_ratio, padding_k=args.padding_k,
                                                                             aware_range=args.aware_range, aware_start=args.aware_start, aware_end=args.aware_end,
                                                                             max_tries=args.max_tries,
                                                                             transform=transform, cache_mode=args.cache_mode,
                                                                             dataset=args.dataset)
+
+        elif aug_type == 'ImageAsymBboxAwareMulti3ResizeExtraJitter1':
+            train_dataset = ImageFolderImageAsymBboxAwareMulti3ResizeExtraJitter1(args.data_dir, train_ann_file, train_prefix,
+                                                                                  train_props_file, image_size=args.image_size, image3_size=args.image3_size,
+                                                                                  image4_size=args.image4_size,
+                                                                                  select_strategy=args.select_strategy,
+                                                                                  select_k=args.select_k, weight_strategy=args.weight_strategy,
+                                                                                  jitter_prob=args.jitter_prob, jitter_ratio=args.jitter_ratio, padding_k=args.padding_k,
+                                                                                  aware_range=args.aware_range, aware_start=args.aware_start, aware_end=args.aware_end,
+                                                                                  max_tries=args.max_tries,
+                                                                                  transform=transform, cache_mode=args.cache_mode,
+                                                                                  dataset=args.dataset)
         elif aug_type == 'NULL':
             train_dataset = ImageFolder(args.data_dir, train_ann_file, train_prefix,
                                         transform, two_crop=two_crop, cache_mode=args.cache_mode,
