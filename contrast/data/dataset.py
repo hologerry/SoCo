@@ -3,7 +3,6 @@ import json
 import logging
 import os
 import time
-from matplotlib.pyplot import winter
 
 import numpy as np
 import torch
@@ -778,8 +777,8 @@ class ImageFolderImageAsymBboxAwareMultiJitter1Cutout(DatasetFolderProps):
         img2 = self.transform[6](img2)  # color
         img3 = self.transform[6](img3)  # color
 
-        img2_cutout = self.transform[7](img2, resized_bboxs2)
-        img3_cutout = self.transform[7](img3, resized_bboxs3)
+        img2_cutout = self.transform[7](img2, bboxs2, self.view_size)
+        img3_cutout = self.transform[7](img3, bboxs3, self.view_size_3)
 
         return img1, img2_cutout, img3_cutout, bboxs1_12, bboxs1_13, bboxs2, bboxs3, aware_corres_12, aware_corres_13, index, target
 
